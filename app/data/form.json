@@ -1,245 +1,65 @@
 {
-	"items": {
-		"lastname": {
-			"label" : "姓",
-			"type": "text",
-			"rules": {
-				"required": true,
-				"maxlength": 10
+	"title":"アンケート",
+	"items":{
+		"nickname__c":{
+			"label":"ニックネーム",
+			"type":"text",
+			"helpText":"ニックネームを入力してください",
+			"rules":{
+				"required":true
 			},
-			"attrs": {
-				"class" : "input-mini",
-				"size" : 5,
-				"placeholder" : "姓"
-			}
+			"attrs":{}
 		},
-		"firstname": {
-			"label" : "名",
-			"type": "text",
-			"required": "名を名乗れ",
-			"maxlength": 10,
-			"class" : "input-mini",
-			"size" : 5,
-			"follow" : true,
-			"title" : "名前を入力する",
-			"placeholder" : "名"
+		"mail__c":{
+			"label":"メールアドレス",
+			"type":"text",
+			"helpText":"メールアドレスを入力してください。",
+			"rules":{},
+			"attrs":{}
 		},
-		"lastname_kana": {
-			"label" : "姓(カナ)",
-			"type": "text",
-			"rules": {
-				"required": {
-					"value" : true,
-					"message" : "カナで姓をいれろ"
-				},
-				"maxlength": 10
-			},
-			"class" : "input-mini",
-			"size" : 5,
-			"katakana" : true,
-			"placeholder" : "カタカナで姓を入力"
+		"company_name__c":{
+			"label":"会社名",
+			"type":"text",
+			"helpText":"会社名を入力してください",
+			"rules":{},
+			"attrs":{}
 		},
-		"firstname_kana": {
-			"label" : "名(カナ)",
-			"type": "text",
-			"required": true,
-			"maxlength": 10,
-			"class" : "input-mini",
-			"size" : 5,
-			"follow" : true,
-			"katakana" : true,
-			"placeholder" : "カタカナで名を入力"
+		"company_url__c":{
+			"label":"会社URL",
+			"type":"text",
+			"helpText":"会社のサイトURLを入力してください",
+			"rules":{},
+			"attrs":{}
 		},
-	    "グループ" : "group",
-		"mail": {
-			"label" : "E-Mail",
-			"type": "text",
-			"rules" : {
-				"required": true,
-				"maxlength": 255,
-				"email" : true
-			},
-			"class" : "input-xlarge",
-			"size" : 40,
-			"helpText" : "メールアドレスを入力してください。"
-		},
-		"url": {
-			"label" : "URL",
-			"type": "text",
-			"rules" : {
-				"url" : true
-			},
-			"class" : "input-xlarge",
-			"size" : 40,
-			"helpText" : "URLを入力してください。"
-		},
-		"password": {
-			"label": "パスワード",
-			"type": "password",
-			"required": true,
-			"digits": true,
-			"minlength": 6,
-			"maxlength": 16
-		},
-		"password_confirm": {
-			"label": "パスワード(確認)",
-			"type": "password",
-			"rules" : {
-				"equalTo": "password"
-			}
-		},
-		"birthday": {
-			"label": "誕生日",
-			"type": "date",
-			"min" : "2000-01-01",
-			"max" : "2013-07-20"
-		},
-		"corp": "text",
-		"department": {
-			"label" : "部署名",
-			"type" : "text",
-			"maxlength" : 20,
-			"requiredIf" : {
-				"value" : "corp==*",
-				"message" : "会社名を入力した場合は必須です。"
-			}
-		},
-		"post": {
-			"label" : "役職",
-			"type": "select",
-			"values": [
-				"1:社長",
-				"hoge",
-				"2:部長",
-				"3:課長",
-				"4:係長",
-				"5:平社員"
+		"company_scale__c":{
+			"label":"会社規模",
+			"type":"select",
+			"values":[
+				{"value":"個人","text":"個人"},
+				{"value":"1-10人","text":"1-10人"},
+				{"value":"11-50人","text":"11-50人"},
+				{"value":"51-100人","text":"51-100人"},
+				{"value":"101-1000人","text":"101-1000人"},
+				{"value":"それ以上","text":"それ以上"}
 			],
-			"selected" : "2"
+			"helpText":"会社規模を選択してください",
+			"rules":{},
+			"attrs":{}
 		},
-		"numOfEmployee": {
-			"label" : "従業員数",
-			"type": "select",
-			"values": [
-				{ "value":"1", "text": "1000人以上"},
-				{ "value":"2", "text": "500-1000人"},
-				{ "value":"3", "text": "100-500人"},
-				{ "value":"4", "text": "50-100人", "selected" : true},
-				{ "value":"5", "text": "10-50人"},
-				{ "value":"6", "text": "10人以下", "disabled" : true}
-			]
+		"inform_update__c":{
+			"label":"更新情報を受け取る",
+			"type":"checkbox",
+			"checked":true,
+			"helpText":"メールでの更新情報を受けたい場合はチェックしてください。",
+			"rules":{"required":true},
+			"attrs":{},
+			"values":["true:"]
 		},
-		"select3": {
-			"label" : "業種(複数選択可)",
-			"type": "select",
-			"values": [
-				{ "value": "1", "text": "システムインテグレーション", "group" : "開発系"},
-				{ "value": "2", "text": "パッケージ開発"},
-				{ "value": "3", "text": "サービス開発"},
-				{ "value": "4", "text": "システム運用管理", "group" : "運用系"},
-				{ "value": "5", "text": "コンサルティング", "group" : "運用系"},
-				{ "value": "6", "text": "その他", "group" : "その他"}
-			],
-			"size": 6,
-			"multiple": true,
-			"selected" : "1,3,5"
-		},
- 		"language": {
-			"label": "使用している言語を選択してください。(複数可))",
-			"type" : "checkbox",
-			"requiredIf": "select3==1||select3==2||select3==3",
-			"values": [
-				"1:Java",
-				"2:C++",
-				"3:Ruby",
-				"4:PHP",
-				"5:Scala",
-				"6:JavaScript"
-			],
-			"checked": "2,3,6"
-		},
-		"experience": {
-			"label" : "経験年数",
-			"type": "radio",
-			"required": true,
-			"values": [
-				{ "value": "1", "text": "10年以上"},
-				{ "value": "2", "text": "8-10年"},
-				{ "value": "3", "text": "5-8年", "checked" : true, "break" : true},
-				{ "value": "4", "text": "3-5年"},
-				{ "value": "5", "text": "2,3年", "break" : true},
-				{ "value": "6", "text": "1年以下", "disabled" : true}
-			]
-		},
-		"tel1" : {
-			"label" : "電話",
-			"tel" : true
-		},
-		"tel2" : {
-			"label" : "携帯電話",
-			"tel" : true
-		},
-		"tel3" : {
-			"label" : "会社電話",
-			"tel" : true
-		},
-		"fax1" : {
-			"label" : "Fax",
-			"tel" : true
-		},
-		"fax2" : {
-			"label" : "会社Fax",
-			"tel" : true
-		},
-		"text": {
-			"label": "説明",
-			"type": "textarea",
-			"rows": 10,
-			"cols": 40,
-			"value": "ほげほげ",
-			"required": true
-		},
-		"file": {
-			"label" : "ファイル添付",
-			"type": "file",
-			"required": true
-		},
- 		"checkbox2": {
-			"label" : " ", 
-			"type": "checkbox",
-			"required": "いいからチェックしろ",
-			"checked": true,
-			"values" : [
-				"ture:内容に同意して次に進む"
-			]
-		},
-		"regexp": {
-			"label": "正規表現",
-			"type": "text",
-			"regexp": {
-				"value" : "\\d+",
-				"message" : "数値をいれろ"
-			},
-			"required": true
-		},
-		"id" : {
-			"type" : "hidden",
-			"value" : "test"
+		"comment__c":{
+			"label":"ご意見ご感想",
+			"type":"textarea",
+			"helpText":"ご意見、ご感想をご自由にご記入ください。"
 		}
 	},
-	"title" : "たいとる",
-	"debug" : true,
-	"tooltip" : true,
-	"helpImage" : "/assets/images/help.png",
-	"requiredAppendix" : "<span style='color:red;'>(*)</span>",
-	"labelWidth" : 150,
-	"rules" : {
-		"requiredOne": "tel1,tel2,tel3",
-		"fax" : {
-			"requiredOne" : {
-				"value" : "fax1,fax2",
-				"message" : "Faxはどちらかが必須です。"
-			}
-		}
-	}
+	"requiredAppendix":"<span style='color:red;'>(*)</span>"
 }

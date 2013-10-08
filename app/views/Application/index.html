@@ -1,7 +1,38 @@
 #{extends 'base.html' /}
 #{set title: title /}
 #{set 'moreScripts' }
-<script src="@routes.Assets.at("javascripts/ext/validation/jquery.validate.js")"></script>
-<script src="@routes.Assets.at("javascripts/jquery.formbuilder.js")"></script>
+<script src="/public/javascripts/validation/jquery.validate.js"></script>
+<script src="/public/javascripts/jquery.formbuilder.js"></script>
+<script>
+$(function() {
+	var redirectUrl = "${redirectUrl}",
+		json = ${json.raw()};
+	var form = $("#form").formbuilder(json);
+	$("#btnSubmit").click(function() {
+		if (form.validate()) {
+			$.ajax({
+				"url" : "/application/postData",
+				"type" : "POST",
+				"data" : {
+					"json" : JSON.stringify(form.getJson())
+				},
+				"success" : function(data) {
+					if (data == "OK") {
+						location.href = redirectUrl;
+					} else {
+						alert(data);
+					}
+				}
+			});
+		}
+	});
+})
+</script>
 #{/set}
-<h1>${title}</h1>
+<div class="container">
+	<div class="row">
+		<form id="form">
+		</form>
+		<button id="btnSubmit" class="btn btn-primary">送信</button>
+	</div>
+</div>
